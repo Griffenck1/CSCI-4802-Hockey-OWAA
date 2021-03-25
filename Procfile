@@ -1,0 +1,1 @@
+web: gunicorn HockeyOWAA.wsgi --log-file -
