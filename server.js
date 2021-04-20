@@ -35,26 +35,6 @@ app.get('/documentation', function(req, res) {
     })
 });
 
-/*
-Formative Portfolio I Page
-*/
-app.get('/formative_portfolio_I', function(req, res) {
-    res.render('./pages/formative_portfolio_I',{
-        my_title: "formative_portfolio_I",
-        data: ``
-    })
-});
-
-/*
-Formative Portfolio II Page
-*/
-app.get('/formative_portfolio_II', function(req, res) {
-    res.render('./pages/formative_portfolio_II',{
-        my_title: "formative_portfolio_II",
-        data: ``
-    })
-});
-
 const PORT = process.env.PORT || 8080;
 
 const server = app.listen(PORT, () => {
