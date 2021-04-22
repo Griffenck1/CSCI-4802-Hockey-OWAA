@@ -25,7 +25,7 @@ const pool = new Pool({
   port: "5432"
 });
 
-
+console.log("WTF");
 const query = {
   text: "SELECT * from Team"
 }
@@ -36,12 +36,12 @@ pool.query(query, (err, res) => {
   } else {
     console.log(res.rows[0])
   }
-})
+});
 // promise
 pool
   .query(query)
   .then(res => console.log(res.rows[0]))
-  .catch(e => console.error(e.stack))
+  .catch(e => console.error(e.stack)) 
 /*
 Index/ Maps page
 */
