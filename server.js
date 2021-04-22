@@ -30,6 +30,7 @@ Index/ Maps page
 */
 app.get('/', function(req, res) {
 	pool.query("SELECT * from Team", (err, res) => {
+	  console.log("WTF");
 	  console.log(err, res);
 	  pool.end();
 	});
