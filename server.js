@@ -7,6 +7,7 @@ var http = require('http');
 var path = require('path');
 const bodyParser = require("body-parser");
 const { response } = require('express');
+const { Pool, Client } = require('pg');
 const router = express.Router();
 
 //allows the app to use .ejs files with a view engine
@@ -15,10 +16,23 @@ app.use(bodyParser.json());
 app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/'));
 
+//Database connection
+const pool = new Pool({
+  user: "bhfalumqxfcmdc",
+  host: "ec2-54-164-241-193.compute-1.amazonaws.com",
+  database: "dddq3k14glmlgd",
+  password: "ae370308a6cd30cea0f894205d904bc3ebddc0cb5b1de5b1bf7b59f3b3483d32",
+  port: "5432"
+});
+
 /*
 Index/ Maps page
 */
 app.get('/', function(req, res) {
+	pool.query("SELECT * from Team", (err, res) => {
+	  console.log(err, res);
+	  pool.end();
+	});
     res.render('./pages/index',{
         my_title: "index",
         data: ``
@@ -35,8 +49,15 @@ app.get('/documentation', function(req, res) {
     })
 });
 
+
+
+
+
+
+
 const PORT = process.env.PORT || 8080;
 
 const server = app.listen(PORT, () => {
 	console.log(`Express running → PORT ${server.address().port}`);
 });
+
