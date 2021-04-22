@@ -25,15 +25,16 @@ const pool = new Pool({
   port: "5432"
 });
 
-/*
-Index/ Maps page
-*/
-app.get('/', function(req, res) {
-	pool.query("SELECT * from Team", (err, res) => {
+pool.query("SELECT * from Team", (err, res) => {
 	  console.log("WTF");
 	  console.log(err, res);
 	  pool.end();
 	});
+/*
+Index/ Maps page
+*/
+app.get('/', function(req, res) {
+	
     res.render('./pages/index',{
         my_title: "index",
         data: ``
