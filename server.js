@@ -25,12 +25,19 @@ const pool = new Pool({
   port: "5432"
 });
 
-pool.query("SELECT * from Team", (err, res) => {
-	  console.log("WTF");
-	  console.log(err, res);
-	  pool.end();
-	});
 
+const query = {
+  text: "SELECT * from Team"
+}
+// callback
+pool.query(query, (err, res) => {
+  if (err) {
+    console.log(err.stack)
+  } else {
+    console.log(res.rows[0])
+  }
+})
+// promise
 pool
   .query(query)
   .then(res => console.log(res.rows[0]))
