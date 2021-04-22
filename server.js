@@ -30,6 +30,11 @@ pool.query("SELECT * from Team", (err, res) => {
 	  console.log(err, res);
 	  pool.end();
 	});
+
+pool
+  .query(query)
+  .then(res => console.log(res.rows[0]))
+  .catch(e => console.error(e.stack))
 /*
 Index/ Maps page
 */
